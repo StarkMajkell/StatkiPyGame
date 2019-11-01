@@ -82,8 +82,8 @@ def wynikNapis(killRed,killBlue):
     label = czcionka.render(napis, 1, kolorNapisu)
     obraz.blit(label, (szerokoscOkna/2-60, 10))
 background = pygame.image.load("background.jpg").convert()
-statekGrafika_1 = pygame.image.load("Statek1-Blue.png").convert()
-statekGrafika_2 = pygame.image.load("Statek1-Red.png").convert()
+statekGrafika_1 = pygame.image.load("Statek1-Blue.png")
+statekGrafika_2 = pygame.image.load("Statek1-Red.png")
 
 # pętla programu program
 while True:
