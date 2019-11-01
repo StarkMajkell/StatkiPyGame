@@ -29,7 +29,7 @@ killBlue = str(killBlue)
 kolorNapisu = (255, 255, 0)
 czcionka = pygame.font.SysFont("Comic Sans MS", 60)
 clock = pygame.time.Clock()
-clock_tick_rate=100
+clock_tick_rate=200
 # moduł funkcji
 def granicePlanszyX(pozycja):
     if pozycja >= szerokoscOkna:
@@ -125,6 +125,6 @@ while True:
     pygame.draw.rect(obraz, (kolorstatku1, 0, 0), statek_1)
     pygame.draw.rect(obraz, (0, 0, kolorstatku2), statek_2)
     pygame.display.flip()
-    off()
     clock.tick(clock_tick_rate)
     obraz.blit(background_image, [0, 0])
+    off()
