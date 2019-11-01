@@ -26,6 +26,8 @@ killRed = 0
 killBlue = 0
 killRed = str(killRed)
 killBlue = str(killBlue)
+kolorNapisu = (255, 255, 0)
+czcionka = pygame.font.SysFont("Comic Sans MS", 60)
 # moduł funkcji
 def granicePlanszyX(pozycja):
     if pozycja >= szerokoscOkna:
@@ -73,17 +75,16 @@ def off():
             sys.exit(0)
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             sys.exit(0)
-
+def wynikNapis(killRed,killBlue):
+    napis = killRed + " : " + killBlue
+    label = czcionka.render(napis, 1, kolorNapisu)
+    obraz.blit(label, (szerokoscOkna/2-60, 10))
 
 # pętla programu program
 while True:
     obraz.fill((0, 0, 0))
-    # tekst
-    yellow = (255, 255, 0)
-    myfont = pygame.font.SysFont("Comic Sans MS", 60)
-    napis = killRed + " : " + killBlue
-    label = myfont.render(napis, 1, yellow)
-    obraz.blit(label, (szerokoscOkna/2-60, 10))
+    # wynik tekst
+
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
             pocisk_1.x = statek_1.x + rozmiargracza_1 / 2
@@ -117,6 +118,7 @@ while True:
     statek_2.x = granicePlanszyX(statek_2.x)
     statek_2.y = granicePlanszyY(statek_2.y)
 
+    wynikNapis(killRed,killBlue)
     pygame.draw.rect(obraz, (kolorstatku1, 0, 0), statek_1)
     pygame.draw.rect(obraz, (0, 0, kolorstatku2), statek_2)
     pygame.display.flip()
