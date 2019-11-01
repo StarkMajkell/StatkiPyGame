@@ -3,6 +3,8 @@ import sys
 
 pygame.init() #musi być...
 
+wielkoscOkna = (900,900)
+
 def granicePlanszy(pozycja):
     if pozycja >= 900:
         pozycja = 0
@@ -10,7 +12,36 @@ def granicePlanszy(pozycja):
         pozycja = 900
     return pozycja
 
-wielkoscOkna = (900,900)
+def ruchxAD():
+    if pygame.key.get_pressed()[pygame.K_+a]:
+        return -1
+    elif pygame.key.get_pressed()[pygame.K_d]:
+        return 1
+    else:
+        return 0
+def ruchyWS():
+    if pygame.key.get_pressed()[pygame.K_w]:
+        return -1
+    elif pygame.key.get_pressed()[pygame.K_s]:
+        return 1
+    else:
+        return 0
+def ruchxLR():
+    if pygame.key.get_pressed()[pygame.K_left]:
+        return -1
+    elif pygame.key.get_pressed()[pygame.K_right]:
+        return 1
+    else:
+        return 0
+def ruchyUD():
+    if pygame.key.get_pressed()[pygame.K_up]:
+        return -1
+    elif pygame.key.get_pressed()[pygame.K_down]:
+        return 1
+    else:
+        return 0
+
+
 obraz = pygame.display.set_mode(wielkoscOkna)
 statek_1 = pygame.Rect(50,450,50,50)
 statek_2 = pygame.Rect(800,450,50,50)
@@ -48,31 +79,11 @@ while True:
             (statek_2.y + 50 > pocisk_1.y and statek_2.y < pocisk_1.y):
         statek_2.x = 850
         statek_2.y = 0
-    #sprawdzanie czy klawisz jest trzymany
-    if pygame.key.get_pressed()[pygame.K_w]:
-        statek_1.y -= 1
 
-    if pygame.key.get_pressed()[pygame.K_s]:
-        statek_1.y += 1
-
-    if pygame.key.get_pressed()[pygame.K_a]:
-        statek_1.x -= 1
-
-    if pygame.key.get_pressed()[pygame.K_d]:
-        statek_1.x += 1
-
-    if pygame.key.get_pressed()[pygame.K_UP]:
-        statek_2.y -= 1
-
-    if pygame.key.get_pressed()[pygame.K_DOWN]:
-        statek_2.y += 1
-
-    if pygame.key.get_pressed()[pygame.K_LEFT]:
-        statek_2.x -= 1
-
-    if pygame.key.get_pressed()[pygame.K_RIGHT]:
-        statek_2.x += 1
-
+    statek_1.x += ruchxAD()
+    #statek_1.y += ruchy()
+    #statek_2.x += ruchx()
+    #statek_2.y += ruchy()
     statek_1.x = granicePlanszy(statek_1.x)
     statek_1.y = granicePlanszy(statek_1.y)
     statek_2.x = granicePlanszy(statek_2.x)
