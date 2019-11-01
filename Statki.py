@@ -8,8 +8,8 @@ a = pygame.image.load('Logo.png')
 pygame.display.set_icon(a)
 
 # moduł ze zmiennymi
-wysokoscOkna = 600
-szerokoscOkna = 1360
+wysokoscOkna = 700
+szerokoscOkna = 1280
 rozmiargracza_1 = 50
 rozmiargracza_2 = 50
 rozmiarpocisku_1 = 10
@@ -28,6 +28,8 @@ killRed = str(killRed)
 killBlue = str(killBlue)
 kolorNapisu = (255, 255, 0)
 czcionka = pygame.font.SysFont("Comic Sans MS", 60)
+clock = pygame.time.Clock()
+clock_tick_rate=100
 # moduł funkcji
 def granicePlanszyX(pozycja):
     if pozycja >= szerokoscOkna:
@@ -79,10 +81,11 @@ def wynikNapis(killRed,killBlue):
     napis = killRed + " : " + killBlue
     label = czcionka.render(napis, 1, kolorNapisu)
     obraz.blit(label, (szerokoscOkna/2-60, 10))
+background_image = pygame.image.load("background.jpg").convert()
 
 # pętla programu program
 while True:
-    obraz.fill((0, 0, 0))
+    #obraz.fill((0, 0, 0))
     # wynik tekst
 
     for event in pygame.event.get():
@@ -123,3 +126,5 @@ while True:
     pygame.draw.rect(obraz, (0, 0, kolorstatku2), statek_2)
     pygame.display.flip()
     off()
+    clock.tick(clock_tick_rate)
+    obraz.blit(background_image, [0, 0])
