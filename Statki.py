@@ -22,8 +22,10 @@ statek_1 = pygame.Rect(0, wysokoscOkna / 2, rozmiargracza_1, rozmiargracza_1)
 statek_2 = pygame.Rect(szerokoscOkna - rozmiargracza_2, (wysokoscOkna / 2), rozmiargracza_2, rozmiargracza_2)
 pocisk_1 = pygame.Rect(szerokoscOkna, 50, rozmiarpocisku_1, rozmiarpocisku_1)
 pocisk_2 = pygame.Rect(50, wysokoscOkna, rozmiarpocisku_2, rozmiarpocisku_2)
-
-
+killRed = 0
+killBlue = 0
+killRed = str(killRed)
+killBlue = str(killBlue)
 # moduł funkcji
 def granicePlanszyX(pozycja):
     if pozycja >= szerokoscOkna:
@@ -76,6 +78,12 @@ def off():
 # pętla programu program
 while True:
     obraz.fill((0, 0, 0))
+    # tekst
+    yellow = (255, 255, 0)
+    myfont = pygame.font.SysFont("Comic Sans MS", 60)
+    napis = killRed + " : " + killBlue
+    label = myfont.render(napis, 1, yellow)
+    obraz.blit(label, (szerokoscOkna/2-60, 10))
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
             pocisk_1.x = statek_1.x + rozmiargracza_1 / 2
