@@ -81,7 +81,9 @@ def wynikNapis(killRed,killBlue):
     napis = killRed + " : " + killBlue
     label = czcionka.render(napis, 1, kolorNapisu)
     obraz.blit(label, (szerokoscOkna/2-60, 10))
-background_image = pygame.image.load("background.jpg").convert()
+background = pygame.image.load("background.jpg").convert()
+statekGrafika_1 = pygame.image.load("Statek1-Blue.png").convert()
+statekGrafika_2 = pygame.image.load("Statek1-Red.png").convert()
 
 # pętla programu program
 while True:
@@ -122,9 +124,11 @@ while True:
     statek_2.y = granicePlanszyY(statek_2.y)
 
     wynikNapis(killRed,killBlue)
-    pygame.draw.rect(obraz, (kolorstatku1, 0, 0), statek_1)
-    pygame.draw.rect(obraz, (0, 0, kolorstatku2), statek_2)
+    #pygame.draw.rect(obraz, (kolorstatku1, 0, 0), statek_1)
+   # pygame.draw.rect(obraz, (0, 0, kolorstatku2), statek_2)
     pygame.display.flip()
     clock.tick(clock_tick_rate)
-    obraz.blit(background_image, [0, 0])
+    obraz.blit(background, [0, 0])
+    obraz.blit(statekGrafika_1, [statek_1.x, statek_1.y])
+    obraz.blit(statekGrafika_2, [statek_2.x, statek_2.y])
     off()
