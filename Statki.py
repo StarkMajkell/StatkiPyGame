@@ -261,7 +261,7 @@ while True:
         my_missile_list.append(Projectile(shotplayer2x, shotplayer2y + 23, -2.54, 0, rozrzut+0.2+(10*ruchyUD())))
         pygame.mixer.music.play(0)
         pygame.mixer.music.play(1)
-        timer_strzalu2 += 13
+        timer_strzalu2 += 41
 
     obraz.blit(life, [zyciegracza1, 0])
     obraz.blit(life, [zyciegracza2, 0])
