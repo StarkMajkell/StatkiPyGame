@@ -143,6 +143,13 @@ class Projectile():
     def siongracz2(self):
         if statek_2.x<(self.x)<(statek_2.x+rozmiargracza_2) and statek_2.y<(self.y)<(statek_2.y+rozmiargracza_2)and self.vx>0:
             self.kolizja2=1
+    def outofmap(self):
+        if self.x>szerokoscOkna or self.x<0:
+            self.y = 2*wysokoscOkna+20
+            self.istnieje=0
+        if self.y>wysokoscOkna or self.y<0:
+            self.y = 2*wysokoscOkna+20
+            self.istnieje=0
 
 
 
@@ -223,6 +230,7 @@ while True:
             b.y = 2*wysokoscOkna+20
             b.istnieje=0
             #killBlue += 1#<-------------Odplala licznik kolizji
+        b.outofmap()
 
 
 
@@ -253,7 +261,7 @@ while True:
         my_missile_list.append(Projectile(shotplayer2x, shotplayer2y + 23, -2.54, 0, rozrzut+0.2+(10*ruchyUD())))
         pygame.mixer.music.play(0)
         pygame.mixer.music.play(1)
-        timer_strzalu2 += 41
+        timer_strzalu2 += 13
 
     obraz.blit(life, [zyciegracza1, 0])
     obraz.blit(life, [zyciegracza2, 0])
