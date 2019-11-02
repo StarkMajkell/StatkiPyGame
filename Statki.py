@@ -100,9 +100,9 @@ class Projectile():
         self.y += self.vy
         pygame.draw.rect(obraz, (255,0,0), [self.x, self.y, rozmiarpocisku_1, rozmiarpocisku_2])
         if self.x >= szerokoscOkna:
-            self.x=0
+            pass
         if self.x <0:
-            self.x=szerokoscOkna
+            pass
 
 while True:
 
@@ -137,11 +137,10 @@ while True:
             my_missile_list.append(Projectile(shotplayer1x,shotplayer1y,1,0))
             pygame.mixer.music.play(0)
             pygame.mixer.music.play(1)
-
         #gracz drugi strzelanie
         if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
             my_missile_list.append(Projectile(shotplayer2x,shotplayer2y,-1,0))
-        elif event.type == pygame.QUIT:
+        if event.type == pygame.QUIT:
             sys.exit(0)
-        elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             sys.exit(0)
