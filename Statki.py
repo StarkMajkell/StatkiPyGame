@@ -23,7 +23,7 @@ zyciegracza1=0
 zyciegracza2=szerokoscOkna-200
 timer_strzalu=0
 timer_strzalu2=0
-rozrzutodklawiszy = 10
+opcjemenu=0
 
 killRed = 0
 killBlue = 0
@@ -31,6 +31,10 @@ kolorNapisu = (255, 255, 0)
 czcionka = pygame.font.SysFont("Comic Sans MS", 60)
 
 background = pygame.image.load("background.jpg").convert()
+menu = pygame.image.load("backgroundmenu.jpg").convert()
+settings= pygame.image.load('settings.jpg').convert()
+przycisksettings=pygame.image.load('przycisksettings.png')
+przyciskstart=pygame.image.load('przyciskstart.png')
 statekGrafika_1 = pygame.image.load("Statek1-Blue.png")
 statekGrafika_1_mask=pygame.mask.from_surface(statekGrafika_1)
 statekGrafika_1_rect=statekGrafika_1.get_rect()
@@ -98,8 +102,6 @@ def off():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit(0)
-        elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-            sys.exit(0)
 
 ##Moduł funkcji od strzelania
 
@@ -127,7 +129,7 @@ class Projectile():
         self.y = y
         self.rozrzut=rozrzut
         self.vx = vx
-        self.vy = vy +(rozrzut/15)
+        self.vy = vy +(rozrzut/150)
         #self.image = pociskGrafika
         self.image = pociskikolor[rand]
         self.rect = self.image.get_rect()
@@ -138,11 +140,13 @@ class Projectile():
             self.y += self.vy
             obraz.blit(self.image, [self.x, self.y])
     def siongracz1(self):
-        if statek_1.x<(self.x+12)<(statek_1.x+rozmiargracza_1) and statek_1.y<(self.y)<(statek_1.y+rozmiargracza_1) and self.vx<0:
-            self.kolizja1=1
+        if (self.istnieje == 1):
+            if statek_1.x<(self.x+12)<(statek_1.x+rozmiargracza_1) and statek_1.y<(self.y)<(statek_1.y+rozmiargracza_1) and self.vx<0:
+                self.kolizja1=1
     def siongracz2(self):
-        if statek_2.x<(self.x)<(statek_2.x+rozmiargracza_2) and statek_2.y<(self.y)<(statek_2.y+rozmiargracza_2)and self.vx>0:
-            self.kolizja2=1
+        if (self.istnieje == 1):
+            if statek_2.x<(self.x)<(statek_2.x+rozmiargracza_2) and statek_2.y<(self.y)<(statek_2.y+rozmiargracza_2)and self.vx>0:
+                self.kolizja2=1
     def outofmap(self):
         if self.x>szerokoscOkna or self.x<0:
             self.y = 2*wysokoscOkna+20
@@ -166,8 +170,41 @@ def wynikNapis(killRed, killBlue):
     label = czcionka.render(napis, 1, kolorNapisu)
     obraz.blit(label, (szerokoscOkna / 2 - 60, 10))
 
+################
+#pierwsze menu
+while True:
+    obraz.blit(menu,[0,0])
+    obraz.blit(przyciskstart, [0, 0])
+    obraz.blit(przycisksettings,[0,40])
+    mouse = pygame.mouse.get_pos()
+    obraz.blit(pociskGrafika,[mouse[0],mouse[1]])
+    click = pygame.mouse.get_pressed()
+    pociskGrafika_rect=pociskGrafika.get_rect()
+    przyciskstart_rect=przyciskstart.get_rect()
+    if pygame.Rect.collidepoint(przyciskstart_rect,mouse[0], mouse[1]):
+        if click[0]:
+            opcjemenu=1
+            break
+    if 0<mouse[0]<220 and 40<mouse[1]<76:
+        if click[0]:
+            opcjemenu=2
+            break
+    pygame.display.flip()
+    off()
 
 
+###############
+#drugie menu
+while True:
+    if opcjemenu==1:
+        break
+    else:
+        obraz.blit(settings, [0, 0])
+        pygame.display.flip()
+        off()
+
+##########################################################################################################
+#BODY GRY CALE!!!
 while True:
     obraz.blit(background, [0, 0])
     #timer strzalu gracza 1
@@ -179,7 +216,7 @@ while True:
         timer_strzalu2 -= 1
 
 
-    rozrzut = random.randint(-2, 2)#róra randomizacja rorzuty góra dół
+    rozrzut = random.randint(-20, 20)#róra randomizacja rorzuty góra dół
     rand = random.randint(1, 2)#randomizacja koloru pocisków
 
 
@@ -220,17 +257,19 @@ while True:
         if b.kolizja1==1:
             zyciegracza1-=5
             b.kolizja1=0
-            b.y=2*wysokoscOkna+20
             b.istnieje=0
             #killRed += 1 #<-------------Odplala licznik kolizji
         b.siongracz2()
         if b.kolizja2 == 1:
             zyciegracza2 += 5
             b.kolizja2 = 0
-            b.y = 2*wysokoscOkna+20
             b.istnieje=0
             #killBlue += 1#<-------------Odplala licznik kolizji
         b.outofmap()
+        if b.istnieje==0:
+            my_missile_list.remove(b)
+
+
 
 
 
@@ -248,17 +287,17 @@ while True:
 #moduł wystrzeliwania pocisków
     #gracz 1
     if pygame.key.get_pressed()[pygame.K_f] and timer_strzalu < 2:
-        my_missile_list.append(Projectile(shotplayer1x, shotplayer1y, 2.7, 0, rozrzut+(rozrzutodklawiszy*ruchyWS())))
+        my_missile_list.append(Projectile(shotplayer1x, shotplayer1y, 2.7, 0, rozrzut+(75*ruchyWS())))
         pygame.mixer.music.play(0)
         pygame.mixer.music.play(1)
         timer_strzalu += 13
     #gracz 2)
     if pygame.key.get_pressed()[pygame.K_p] and timer_strzalu2 < 2:
         rand = random.randint(0,0)
-        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y - 6, -2.6, 0, rozrzut+(rozrzutodklawiszy*ruchyUD())))
-        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y - 16, -2.54, 0, rozrzut-0.2+(rozrzutodklawiszy*ruchyUD())))
-        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y + 13, -2.6, 0, rozrzut+(rozrzutodklawiszy*ruchyUD())))
-        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y + 23, -2.54, 0, rozrzut+0.2+(rozrzutodklawiszy*ruchyUD())))
+        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y - 6, -2.6, 0, rozrzut+(75*ruchyUD())))
+        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y - 16, -2.54, 0, rozrzut-0.2+(75*ruchyUD())))
+        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y + 13, -2.6, 0, rozrzut+(75*ruchyUD())))
+        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y + 23, -2.54, 0, rozrzut+0.2+(75*ruchyUD())))
         pygame.mixer.music.play(0)
         pygame.mixer.music.play(1)
         timer_strzalu2 += 41
@@ -266,4 +305,6 @@ while True:
     obraz.blit(life, [zyciegracza1, 0])
     obraz.blit(life, [zyciegracza2, 0])
     pygame.display.flip()
+    if pygame.key.get_pressed()[pygame.K_ESCAPE]:
+        sys.exit(0)
     off()
