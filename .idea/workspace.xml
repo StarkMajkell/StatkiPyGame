@@ -4,7 +4,6 @@
     <list default="true" id="72e1eb92-01a2-48e1-8981-a498c89a987c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Statki.py" beforeDir="false" afterPath="$PROJECT_DIR$/Statki.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Testy.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +50,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Testy">
+  <component name="RunManager" selected="Python.Statki">
     <configuration name="Radioaktywne" type="PythonConfigurationType" factoryName="Python">
       <module name="Pygame" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -139,7 +138,7 @@
       <workItem from="1572558867955" duration="1517000" />
       <workItem from="1572598419771" duration="21266000" />
       <workItem from="1572652144505" duration="2971000" />
-      <workItem from="1572694095792" duration="6701000" />
+      <workItem from="1572694095792" duration="8500000" />
     </task>
     <task id="LOCAL-00001" summary="lel">
       <created>1572602896971</created>
@@ -203,9 +202,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="lel" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Pygame$Statki.coverage" NAME="Statki Coverage Results" MODIFIED="1572701800427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Pygame$Statki.coverage" NAME="Statki Coverage Results" MODIFIED="1572711986731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Pygame$Radioaktywne.coverage" NAME="Radioaktywne Coverage Results" MODIFIED="1572699164855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Pygame$Testy.coverage" NAME="Testy Coverage Results" MODIFIED="1572700639078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Pygame$Testy.coverage" NAME="Testy Coverage Results" MODIFIED="1572711724930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Pygame$Szachy.coverage" NAME="Statki Coverage Results" MODIFIED="1572651041257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
