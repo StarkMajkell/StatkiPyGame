@@ -29,7 +29,9 @@ killBlue = str(killBlue)
 kolorNapisu = (255, 255, 0)
 czcionka = pygame.font.SysFont("Comic Sans MS", 60)
 clock = pygame.time.Clock()
-clock_tick_rate=200
+clock_tick_rate=2000
+my_missile_list=[]
+music = pygame.mixer.music.load("pif.mp3")
 # moduł funkcji
 def granicePlanszyX(pozycja):
     if pozycja >= szerokoscOkna:
@@ -86,7 +88,22 @@ statekGrafika_1 = pygame.image.load("Statek1-Blue.png")
 statekGrafika_2 = pygame.image.load("Statek1-Red.png")
 bonusy_speed = pygame.image.load("Speed.png")
 
-# pętla programu program
+#MOduł funkcji od strzelania
+class Projectile():
+    def __init__(self,x,y,vx,vy):
+        self.x = x
+        self.y = y
+        self.vx = vx
+        self.vy = vy
+    def missile(self):
+        self.x += self.vx
+        self.y += self.vy
+        pygame.draw.rect(obraz, (255,0,0), [self.x, self.y, rozmiarpocisku_1, rozmiarpocisku_2])
+        if self.x >= szerokoscOkna:
+            self.x=0
+        if self.x <0:
+            self.x=szerokoscOkna
+
 while True:
 
     # poruszanie sie
@@ -104,8 +121,27 @@ while True:
     pygame.display.flip()
     clock.tick(clock_tick_rate)
     obraz.blit(background, [0, 0])
-    obraz.blit(bonusy_speed, [100, 100])
+    #obraz.blit(bonusy_speed, [100, 100])
+    for b in my_missile_list:
+        b.missile()
     obraz.blit(statekGrafika_1, [statek_1.x, statek_1.y])
     obraz.blit(statekGrafika_2, [statek_2.x, statek_2.y])
+    # moduł pod pozycje pocisków
+    shotplayer1x = statek_1.x + rozmiargracza_1
+    shotplayer1y = statek_1.y + rozmiargracza_1 / 2 - rozmiarpocisku_1 / 2
+    shotplayer2x = statek_2.x + rozmiargracza_2 / 2
+    shotplayer2y = statek_2.y + rozmiargracza_2 / 2 - rozmiarpocisku_2 / 2
+    for event in pygame.event.get():
+        #gracz 1 strzelanie
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
+            my_missile_list.append(Projectile(shotplayer1x,shotplayer1y,1,0))
+            pygame.mixer.music.play(0)
+            pygame.mixer.music.play(1)
 
-    off()
+        #gracz drugi strzelanie
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+            my_missile_list.append(Projectile(shotplayer2x,shotplayer2y,-1,0))
+        elif event.type == pygame.QUIT:
+            sys.exit(0)
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            sys.exit(0)
