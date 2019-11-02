@@ -23,7 +23,7 @@ zyciegracza1=0
 zyciegracza2=szerokoscOkna-200
 timer_strzalu=0
 timer_strzalu2=0
-
+rozrzutodklawiszy = 10
 
 killRed = 0
 killBlue = 0
@@ -248,17 +248,17 @@ while True:
 #moduł wystrzeliwania pocisków
     #gracz 1
     if pygame.key.get_pressed()[pygame.K_f] and timer_strzalu < 2:
-        my_missile_list.append(Projectile(shotplayer1x, shotplayer1y, 2.7, 0, rozrzut+(10*ruchyWS())))
+        my_missile_list.append(Projectile(shotplayer1x, shotplayer1y, 2.7, 0, rozrzut+(rozrzutodklawiszy*ruchyWS())))
         pygame.mixer.music.play(0)
         pygame.mixer.music.play(1)
         timer_strzalu += 13
     #gracz 2)
     if pygame.key.get_pressed()[pygame.K_p] and timer_strzalu2 < 2:
         rand = random.randint(0,0)
-        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y - 6, -2.6, 0, rozrzut+(10*ruchyUD())))
-        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y - 16, -2.54, 0, rozrzut-0.2+(10*ruchyUD())))
-        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y + 13, -2.6, 0, rozrzut+(10*ruchyUD())))
-        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y + 23, -2.54, 0, rozrzut+0.2+(10*ruchyUD())))
+        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y - 6, -2.6, 0, rozrzut+(rozrzutodklawiszy*ruchyUD())))
+        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y - 16, -2.54, 0, rozrzut-0.2+(rozrzutodklawiszy*ruchyUD())))
+        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y + 13, -2.6, 0, rozrzut+(rozrzutodklawiszy*ruchyUD())))
+        my_missile_list.append(Projectile(shotplayer2x, shotplayer2y + 23, -2.54, 0, rozrzut+0.2+(rozrzutodklawiszy*ruchyUD())))
         pygame.mixer.music.play(0)
         pygame.mixer.music.play(1)
         timer_strzalu2 += 41
@@ -266,5 +266,4 @@ while True:
     obraz.blit(life, [zyciegracza1, 0])
     obraz.blit(life, [zyciegracza2, 0])
     pygame.display.flip()
-
     off()
