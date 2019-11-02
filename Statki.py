@@ -21,11 +21,11 @@ statek_2 = pygame.Rect(szerokoscOkna - rozmiargracza_2, (wysokoscOkna / 2), rozm
 my_missile_list = []
 zyciegracza1 = 0
 zyciegracza2 = szerokoscOkna - 200
+clock = pygame.time.Clock()
+clock_tick_rate = 1000
 
 killRed = 0
 killBlue = 0
-killRed = str(killRed)
-killBlue = str(killBlue)
 kolorNapisu = (255, 255, 0)
 czcionka = pygame.font.SysFont("Comic Sans MS", 60)
 
@@ -147,6 +147,8 @@ class Projectile():
 
 
 def wynikNapis(killRed, killBlue):
+    killRed = str(killRed)
+    killBlue = str(killBlue)
     napis = killRed + " : " + killBlue
     label = czcionka.render(napis, 1, kolorNapisu)
     obraz.blit(label, (szerokoscOkna / 2 - 60, 10))
@@ -178,8 +180,6 @@ while True:
         zyciegracza1 -= 1
         zyciegracza2 += 1
 
-    wynikNapis(killRed, killBlue)
-
     obraz.blit(statekGrafika_1, [statek_1.x, statek_1.y])
     obraz.blit(statekGrafika_2, [statek_2.x, statek_2.y])
 
@@ -194,7 +194,7 @@ while True:
     # zycie
     if zyciegracza1 <= -200:
         zyciegracza1 = 0
-        killRed += '1'
+        killRed += 1
 
     for event in pygame.event.get():
         # gracz 1 strzelanie
@@ -213,8 +213,9 @@ while True:
                 Projectile(shotplayer2x, shotplayer2y - 5, -2, 0))  # <--- podwójny strzal dla niebieskiego
             my_missile_list.append(Projectile(shotplayer2x, shotplayer2y + 13, -2, 0))
 
+    wynikNapis(killRed, killBlue)
     obraz.blit(life, [zyciegracza1, 0])
     obraz.blit(life, [zyciegracza2, 0])
     pygame.display.flip()
-
+    clock.tick(clock_tick_rate)
     off()
