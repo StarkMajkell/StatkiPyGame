@@ -1,7 +1,7 @@
 import pygame
 import sys
 import random
-
+#####elo
 pygame.init()  # musi być
 pygame.display.set_caption('Statki')
 a = pygame.image.load('Logo.png')
