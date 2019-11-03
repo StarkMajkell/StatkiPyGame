@@ -23,6 +23,7 @@ timer_strzalu2=0
 opcjemenu=0
 pociskikolor=[]
 my_missile_list=[]
+timer=0
 
 
 killRed = 0
@@ -49,7 +50,7 @@ statekGrafika_2 = pygame.image.load("Grafa/Statek1-Red1.png")
 statekGrafika_2_mask=pygame.mask.from_surface(statekGrafika_2)
 pociskGrafika = pygame.image.load('Grafa/pocisk.png').convert_alpha()
 pociskikolor.append(pygame.image.load('Grafa/pocisk.png'))
-pociskikolor.append(pygame.image.load('Grafa/pocisk2.png'))
+pociskikolor.append(pygame.image.load('Grafa/pocisk4.png'))
 pociskikolor.append(pygame.image.load('Grafa/pocisk3.png'))
 
 
@@ -188,7 +189,8 @@ class Statek():
                 pifpaf()
         if pygame.key.get_pressed()[pygame.K_u]:
             if self.player == 3:
-                my_missile_list.append(Projectile(self.x+30, self.y+30, 5.7, 0, rozrzut + (75 * ruchyWS())))
+
+                my_missile_list.append(Projectile(self.x+30, self.y+30, 22.7, 0, 0))
                 pifpaf()
         if pygame.key.get_pressed()[pygame.K_KP7]:
             if self.player == 4:
@@ -358,6 +360,10 @@ while True:
         while True:
             #obraz.blit(background1920, [0,0])
             obraz.blit(background, [0, 0])
+            if timer <=0:
+                timer += 1
+            if timer > 8:
+                timer = 0
             #timer strzalu gracza 1
             if timer_strzalu >0:
                 timer_strzalu -=1
@@ -365,7 +371,6 @@ while True:
             #timer strzalu gracza2
             if timer_strzalu2 > 0:
                 timer_strzalu2 -= 1
-
 
             rozrzut = random.randint(-20, 20)#róra randomizacja rorzuty góra dół
             rand = random.randint(1, 1)#randomizacja koloru pocisków
@@ -443,7 +448,7 @@ while True:
                 my_missile_list.append(Projectile(shotplayer1x, shotplayer1y, 2.7, 0, rozrzut+(75*ruchyWS())))
                 pygame.mixer.music.play(0)
                 pygame.mixer.music.play(1)
-                timer_strzalu += 1
+                timer_strzalu += 23
             #gracz 2)
             if pygame.key.get_pressed()[pygame.K_p] and timer_strzalu2 < 2:
                 rand = random.randint(0,2)
