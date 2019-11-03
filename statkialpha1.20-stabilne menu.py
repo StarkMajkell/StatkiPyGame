@@ -26,7 +26,7 @@ my_missile_list=[]
 
 killRed = 0
 killBlue = 0
-kolorNapisu = (255, 255, 0)
+kolorNapisu = (0, 255, 255)
 czcionka = pygame.font.Font("Czcionki/digital-7.ttf", 60)
 
 background = pygame.image.load("Grafa/background2.jpg").convert()
@@ -157,7 +157,7 @@ class Projectile():
                 self.kolizja1=1
     def siongracz2(self):
         if (self.istnieje == 1):
-            if statek_2.x+30<(self.x)<(statek_2.x++rozmiargracza_2) and statek_2.y<(self.y)<(statek_2.y+rozmiargracza_2)and self.vx>0:
+            if statek_2.x+30<(self.x)<(statek_2.x+rozmiargracza_2) and statek_2.y<(self.y)<(statek_2.y+rozmiargracza_2)and self.vx>0:
                 self.kolizja2=1
     def outofmap(self):
         if self.x>szerokoscOkna or self.x<0:
