@@ -27,7 +27,7 @@ my_missile_list=[]
 killRed = 0
 killBlue = 0
 kolorNapisu = (255, 255, 0)
-czcionka = pygame.font.SysFont("Comic Sans MS", 60)
+czcionka = pygame.font.Font("Czcionki/digital-7.ttf", 60)
 
 background = pygame.image.load("Grafa/background2.jpg").convert()
 menu = pygame.image.load("Grafa/backgroundmenu.jpg").convert()
@@ -166,13 +166,21 @@ class Projectile():
         if self.y>wysokoscOkna or self.y<0:
             self.y = 2*wysokoscOkna+20
             self.istnieje=0
-
 def wynikNapis(killRed, killBlue):#funckja od wyswietlania wyniku
     killRed = str(killRed)
     killBlue = str(killBlue)
-    napis = killRed + " : " + killBlue
-    label = czcionka.render(napis, 1, kolorNapisu)
-    obraz.blit(label, (szerokoscOkna / 2 - 60, 10))
+    #napis = killRed + " : " + killBlue
+    napis1 = killRed
+    napis2 = " : "
+    napis3 = killBlue
+    #label = czcionka.render(napis, 1, kolorNapisu)
+    label1 = czcionka.render(napis1, 1, kolorNapisu)
+    label2 = czcionka.render(napis2, 1, kolorNapisu)
+    label3 = czcionka.render(napis3, 1, kolorNapisu)
+
+    obraz.blit(label1, (szerokoscOkna / 2 - 50, 30))
+    obraz.blit(label2, (szerokoscOkna / 2 - 20, 30))
+    obraz.blit(label3, (szerokoscOkna / 2 + 20, 30))
 
 
 
