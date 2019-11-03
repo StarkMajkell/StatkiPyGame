@@ -26,8 +26,8 @@ my_missile_list=[]
 
 killRed = 0
 killBlue = 0
-kolorNapisu = (0, 255, 255)
-czcionka = pygame.font.Font("Czcionki/digital-7.ttf", 60)
+kolorNapisu = (255, 255, 0)
+czcionka = pygame.font.SysFont("Comic Sans MS", 60)
 
 background = pygame.image.load("Grafa/background2.jpg").convert()
 menu = pygame.image.load("Grafa/backgroundmenu.jpg").convert()
@@ -108,22 +108,29 @@ def off():
         if event.type == pygame.QUIT:
             sys.exit(0)
 
-##Moduł funkcji od strzelania
+##Klasa gracza
 
-class gracz(pygame.sprite.Sprite):
-    def __init__(self,x,y,vx,vy):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pociskGrafika
-        self.rect = pociskGrafika.get_rect()
-        self.mask = pygame.mask.from_surface(self.image)
-        self.x = x
-        self.y = y
-        self.vx = vx
-        self.vy = vy
-    def missile(self):
-        self.x += self.vx
-        self.y += self.vy
+class Statek():
+    def __init__(self,pozycjax,pozycjay,nrstatku):
+        self.image = nrstatku
+        self.x = pozycjax
+        self.y = pozycjay
+
+    def update(self):
+        self.x += ruchxAD()
+        self.y += ruchyWS()
         obraz.blit(self.image, [self.x, self.y])
+
+    def shot(self):
+        if pygame.key.get_pressed()[pygame.K_f]:
+            my_missile_list.append(Projectile(self.x, self.y, 2.7, 0, rozrzut + (75 * ruchyWS())))
+            pygame.mixer.music.play(0)
+            pygame.mixer.music.play(1)
+
+
+
+
+
 
 #NAJWAZNIEJSZA KLASA TUTAJ NIC NIE RUSZAC!!!
 class Projectile():
@@ -163,20 +170,10 @@ class Projectile():
 def wynikNapis(killRed, killBlue):#funckja od wyswietlania wyniku
     killRed = str(killRed)
     killBlue = str(killBlue)
-    #napis = killRed + " : " + killBlue
-    napis1 = killRed
-    napis2 = " : "
-    napis3 = killBlue
-    #label = czcionka.render(napis, 1, kolorNapisu)
-    label1 = czcionka.render(napis1, 1, kolorNapisu)
-    label2 = czcionka.render(napis2, 1, kolorNapisu)
-    label3 = czcionka.render(napis3, 1, kolorNapisu)
+    napis = killRed + " : " + killBlue
+    label = czcionka.render(napis, 1, kolorNapisu)
+    obraz.blit(label, (szerokoscOkna / 2 - 60, 10))
 
-    obraz.blit(label1, (szerokoscOkna / 2 - 50, 30))
-    obraz.blit(label2, (szerokoscOkna / 2 - 20, 30))
-    obraz.blit(label3, (szerokoscOkna / 2 + 20, 30))
-def rusujprzycisk(nazwa,x,y):
-    obraz.blit(nazwa, [x, x])
 
 
 
@@ -323,6 +320,7 @@ while True:
             obraz.blit(statekGrafika_1, [statek_1.x, statek_1.y])#to tutaj sa nasze statki, pamiętaj
             obraz.blit(statekGrafika_2, [statek_2.x, statek_2.y])#to tutaj sa nasze statki, pamiętaj
 
+            #czarek.shot()
             #Updatuje wszystkie pociski z clasy Projectile
             for b in my_missile_list:
                 b.missile()
@@ -342,11 +340,14 @@ while True:
                 if b.istnieje==0:
                     my_missile_list.remove(b)
 
+
+
             #zycie i co sie dzieje po smierci
             if zyciegracza1 <= -200:
                 zyciegracza1 = 0
                 killRed += 1
                 statek_1 = pygame.Rect(0, 100, rozmiargracza_1, rozmiargracza_1)
+
 
             if zyciegracza2 >= szerokoscOkna:
                 zyciegracza2 = szerokoscOkna - 200
@@ -359,17 +360,17 @@ while True:
                 my_missile_list.append(Projectile(shotplayer1x, shotplayer1y, 2.7, 0, rozrzut+(75*ruchyWS())))
                 pygame.mixer.music.play(0)
                 pygame.mixer.music.play(1)
-                timer_strzalu += 21
+                timer_strzalu += 1
             #gracz 2)
             if pygame.key.get_pressed()[pygame.K_p] and timer_strzalu2 < 2:
-                rand = random.randint(0,0)
+                rand = random.randint(0,2)
                 my_missile_list.append(Projectile(shotplayer2x, shotplayer2y - 6, -2.6, 0, rozrzut+(75*ruchyUD())))
                 my_missile_list.append(Projectile(shotplayer2x, shotplayer2y - 16, -2.54, 0, rozrzut-0.2+(75*ruchyUD())))
                 my_missile_list.append(Projectile(shotplayer2x, shotplayer2y + 13, -2.6, 0, rozrzut+(75*ruchyUD())))
                 my_missile_list.append(Projectile(shotplayer2x, shotplayer2y + 23, -2.54, 0, rozrzut+0.2+(75*ruchyUD())))
                 pygame.mixer.music.play(0)
                 pygame.mixer.music.play(1)
-                timer_strzalu2 += 80
+                timer_strzalu2 += 0
 
             obraz.blit(life, [zyciegracza1, 0])
             obraz.blit(life, [zyciegracza2, 0])
