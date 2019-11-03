@@ -1,10 +1,10 @@
 import pygame
 import sys
 import random
-#####elo
+
 pygame.init()  # musi być
 pygame.display.set_caption('Statki')
-a = pygame.image.load('Logo.png')
+a = pygame.image.load('Grafa/Logo.png')
 pygame.display.set_icon(a)
 
 #moduł ze zmiennymi
@@ -28,29 +28,28 @@ killRed = 0
 killBlue = 0
 kolorNapisu = (255, 255, 0)
 czcionka = pygame.font.SysFont("Comic Sans MS", 60)
-
-background = pygame.image.load("background.jpg").convert()
-menu = pygame.image.load("backgroundmenu.jpg").convert()
-settings= pygame.image.load('settings.jpg').convert()
-przyciskback= pygame.image.load('przyciskback.png')
-przycisksettings=pygame.image.load('przycisksettings.png')
-przyciskstart=pygame.image.load('przyciskstart.png')
-przyciskexit=pygame.image.load('przyciskexit.png')
-pustemenu=pygame.image.load('pustemenu.jpg')
-statekGrafika_1 = pygame.image.load("Statek1-Blue.png")
+background = pygame.image.load("Grafa/background.jpg").convert()
+menu = pygame.image.load("Grafa/backgroundmenu.jpg").convert()
+settings= pygame.image.load('Grafa/settings.jpg').convert()
+przyciskback= pygame.image.load('Grafa/przyciskback.png')
+przycisksettings=pygame.image.load('Grafa/przycisksettings.png')
+przyciskstart=pygame.image.load('Grafa/przyciskstart.png')
+przyciskexit=pygame.image.load('Grafa/przyciskexit.png')
+pustemenu=pygame.image.load('Grafa/pustemenu.jpg')
+statekGrafika_1 = pygame.image.load("Grafa/Statek1-Blue.png")
 statekGrafika_1_mask=pygame.mask.from_surface(statekGrafika_1)
 statekGrafika_1_rect=statekGrafika_1.get_rect()
-statekGrafika_2 = pygame.image.load("Statek1-Red.png")
+statekGrafika_2 = pygame.image.load("Grafa/Statek1-Red.png")
 statekGrafika_2_mask=pygame.mask.from_surface(statekGrafika_2)
-pociskGrafika = pygame.image.load('pocisk.png').convert_alpha()
-pociskikolor.append(pygame.image.load('pocisk.png'))
-pociskikolor.append(pygame.image.load('pocisk2.png'))
-pociskikolor.append(pygame.image.load('pocisk3.png'))
+pociskGrafika = pygame.image.load('Grafa/pocisk.png').convert_alpha()
+pociskikolor.append(pygame.image.load('Grafa/pocisk.png'))
+pociskikolor.append(pygame.image.load('Grafa/pocisk2.png'))
+pociskikolor.append(pygame.image.load('Grafa/pocisk3.png'))
 
 
 pociskGrafika_mask=pygame.mask.from_surface(pociskGrafika)
-life = pygame.image.load('life.png')
-music = pygame.mixer.music.load("pif.mp3")
+life = pygame.image.load('Grafa/life.png')
+music = pygame.mixer.music.load("Dźwięki/pif.mp3")
 
 
 
