@@ -23,7 +23,7 @@ zyciegracza1=0
 zyciegracza2=szerokoscOkna-200
 timer_strzalu=0
 timer_strzalu2=0
-opcjemenu=0
+
 
 killRed = 0
 killBlue = 0
@@ -31,10 +31,6 @@ kolorNapisu = (255, 255, 0)
 czcionka = pygame.font.SysFont("Comic Sans MS", 60)
 
 background = pygame.image.load("background.jpg").convert()
-menu = pygame.image.load("backgroundmenu.jpg").convert()
-settings= pygame.image.load('settings.jpg').convert()
-przycisksettings=pygame.image.load('przycisksettings.png')
-przyciskstart=pygame.image.load('przyciskstart.png')
 statekGrafika_1 = pygame.image.load("Statek1-Blue.png")
 statekGrafika_1_mask=pygame.mask.from_surface(statekGrafika_1)
 statekGrafika_1_rect=statekGrafika_1.get_rect()
@@ -170,41 +166,8 @@ def wynikNapis(killRed, killBlue):
     label = czcionka.render(napis, 1, kolorNapisu)
     obraz.blit(label, (szerokoscOkna / 2 - 60, 10))
 
-################
-#pierwsze menu
-while True:
-    obraz.blit(menu,[0,0])
-    obraz.blit(przyciskstart, [0, 0])
-    obraz.blit(przycisksettings,[0,40])
-    mouse = pygame.mouse.get_pos()
-    obraz.blit(pociskGrafika,[mouse[0],mouse[1]])
-    click = pygame.mouse.get_pressed()
-    pociskGrafika_rect=pociskGrafika.get_rect()
-    przyciskstart_rect=przyciskstart.get_rect()
-    if pygame.Rect.collidepoint(przyciskstart_rect,mouse[0], mouse[1]):
-        if click[0]:
-            opcjemenu=1
-            break
-    if 0<mouse[0]<220 and 40<mouse[1]<76:
-        if click[0]:
-            opcjemenu=2
-            break
-    pygame.display.flip()
-    off()
 
 
-###############
-#drugie menu
-while True:
-    if opcjemenu==1:
-        break
-    else:
-        obraz.blit(settings, [0, 0])
-        pygame.display.flip()
-        off()
-
-##########################################################################################################
-#BODY GRY CALE!!!
 while True:
     obraz.blit(background, [0, 0])
     #timer strzalu gracza 1
@@ -300,7 +263,7 @@ while True:
         my_missile_list.append(Projectile(shotplayer2x, shotplayer2y + 23, -2.54, 0, rozrzut+0.2+(75*ruchyUD())))
         pygame.mixer.music.play(0)
         pygame.mixer.music.play(1)
-        timer_strzalu2 += 41
+        timer_strzalu2 += 1
 
     obraz.blit(life, [zyciegracza1, 0])
     obraz.blit(life, [zyciegracza2, 0])
