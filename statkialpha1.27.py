@@ -50,24 +50,8 @@ life = pygame.image.load('Grafa/life.png')
 music = pygame.mixer.music.load("Dźwięki/pif.mp3")
 wczytywanie=0
 parametryplayer1=[]
-
-file = open('config/parametry.txt', 'r').read()
-lines = file.split('\n')
-for line in lines:
-    parametryplayer1.append(line)
-    print(parametryplayer1)
-
-def f(a, b, c,d,e,f,g,h,i,j,k,l):
-    print("%s %s %s %s %s %s %s %s %s %s %s %s" % (a, b, c,d,e,f,g,h,i,j,k,l))
-
-l = [1, 2, 3]
-print(f(*parametryplayer1))
-
-
-
-
-
-
+grafaStatków = [statekGrafika_1,statekGrafika_2]
+pociski = [pocisk,pocisk2,pocisk3,pocisk4]
 
 #moduł resetowania pozycji
 def granicePlanszyX(pozycja):
@@ -153,7 +137,7 @@ def pifpaf():
 ##Klasa gracza
 class Statek():
     def __init__(self,pozycjax,pozycjay,nrstatku,player,pozycjaxshot,pozycjayshot,predkoscxshot,predkoscyshot,modyfikatorrozrzutu,modyfikatorrozstrzalu,hp,rodzajpocisku):
-        self.image = nrstatku
+        self.image = grafaStatków[nrstatku]
         self.x = pozycjax
         self.y = pozycjay
         self.player = player
@@ -165,7 +149,7 @@ class Statek():
         self.modyfikatorrozstrzalu=modyfikatorrozstrzalu
         self.hp = hp
         self.basehp = hp
-        self.rodzajpocisku=rodzajpocisku
+        self.rodzajpocisku = pociski[rodzajpocisku]
     def update(self):
         if ruchxAD() == 1 or -1:
             if self.player ==1:
@@ -216,13 +200,24 @@ class Statek():
 
 
 
-
+kupa = []
 #lista_statków.append(Statek(50, 50, statek3, 3, 60, 25, 2.7, 0, 1, 75, 10, pocisk2))
+file = open('config/parametry.txt', 'r').read()
+lines = file.split('\n')
+for line in lines:
+    x = line
+    x = int(x)
+    kupa.append(x)
 
-lista_statków.append(Statek(50, 50, statek3, 1, 60, 25, 2.7, 0, 1, 75, 1000, pocisk2))
+    #print(parametryplayer1)
 
-lista_statków.append(Statek(1100, 50, statek3, 2, 0, 25, -2.7, 0, 1, 75, 10, pocisk2))
+def f(a,b,c,d,e,f,g,h,i,j,k,l):
+    print("%d %d %d %d %d %d %d %d %d %d %d %d" % (a,b,c,d,e,f,g,h,i,j,k,l))
 
+f(*kupa)
+#lista_statków.append(Statek(50, 50, 0, 1, 60, 25, 2.7, 0, 1, 75, 1000, 0))
+#lista_statków.append(Statek(1100, 50, 1, 2, 0, 25, -2.7, 0, 1, 75, 10, 0))
+lista_statków.append(Statek(*kupa))
 #lista_statków.append(Statek(50, 50, statek3, 4, 60, 25, 2.7, 0, 1, 75, 10, pocisk2))
 
 #NAJWAZNIEJSZA KLASA TUTAJ NIC NIE RUSZAC!!!
