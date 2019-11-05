@@ -65,10 +65,10 @@ pocisk2=pygame.image.load('Grafa/pocisk2.png')
 pocisk4=pygame.image.load('Grafa/pocisk4.png')
 pocisk3=pygame.image.load('Grafa/pocisk3.png')
 life = pygame.image.load('Grafa/life.png')
-music = pygame.mixer.music.load("Dźwięki/pif.mp3")
+pygame.mixer.music.load("Dźwięki/intel.mp3")
 grafaStatków = [statek1,statek2,statek3]
 pociski = [pocisk1,pocisk2,pocisk3,pocisk4]
-
+pygame.mixer.music.play(-1)
 
 #moduł resetowania pozycji
 def granicePlanszyX(pozycja):
@@ -109,9 +109,8 @@ def off():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit(0)
-def pifpaf():
-    pygame.mixer.music.play(0)
-    pygame.mixer.music.play(1)
+
+
 
 
 ##Klasa gracza
@@ -178,7 +177,7 @@ class Statek():
                                self.predkoscyshot,
                                rozrzut * self.modyfikatorrozrzutu + (self.modyfikatorrozstrzalu * tab1[1]),
                                self.rodzajpocisku))
-                pifpaf()
+
         if pygame.key.get_pressed()[pygame.K_p]:
             if self.player == 2:
                 my_missile_list.append(
@@ -186,7 +185,7 @@ class Statek():
                                self.predkoscyshot,
                                rozrzut * self.modyfikatorrozrzutu + (self.modyfikatorrozstrzalu * tab2[1]),
                                self.rodzajpocisku))
-                pifpaf()
+
         if pygame.key.get_pressed()[pygame.K_u]:
             if self.player == 3:
                 my_missile_list.append(
@@ -194,7 +193,7 @@ class Statek():
                                self.predkoscyshot,
                                rozrzut * self.modyfikatorrozrzutu + (self.modyfikatorrozstrzalu * tab3[1]),
                                self.rodzajpocisku))
-                pifpaf()
+
         if pygame.key.get_pressed()[pygame.K_KP9]:
             if self.player == 4:
                 my_missile_list.append(
@@ -202,7 +201,7 @@ class Statek():
                                self.predkoscyshot,
                                rozrzut * self.modyfikatorrozrzutu + (self.modyfikatorrozstrzalu * tab4[1]),
                                self.rodzajpocisku))
-                pifpaf()
+
 
 
 
@@ -571,14 +570,14 @@ while True:
     if opcjemenu == 1:
         while True:
             obraz.blit(background, [0, 0])
-            if globalnytimer <=10:
+            if globalnytimer <60:
                 globalnytimer += 1
-            if globalnytimer > 10:
+            else:
                 globalnytimer = 0
+            print(globalnytimer)
             clock.tick(60)
 
             rozrzut = random.randint(-rozrzutmenu, rozrzutmenu)#róra randomizacja rorzuty góra dół
-            #wynikNapis(killRed,killBlue)#wywołanie wyniku
 
             #Updatuje wszystkie pociski z clasy Projectile
             for b in my_missile_list:
