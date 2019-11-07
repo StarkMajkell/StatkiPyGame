@@ -20,6 +20,7 @@ opcjemenu = -1
 my_missile_list = []
 lista_statków = []
 lista_enemy= []
+lista_turet=[]
 parametryplayer1 = []
 parametryplayer2 = []
 parametryplayer3 = []
@@ -76,6 +77,11 @@ tabelaplayer3=pygame.image.load('Grafa/statyp3.png')
 tabelaplayer4=pygame.image.load('Grafa/statyp4.png')
 life1 = pygame.image.load('Grafa/life1.png')
 pygame.mixer.music.load("Dźwięki/intel.mp3")
+turet1=pygame.image.load('Grafa/turet1.png')
+turet2=pygame.image.load('Grafa/turet2.png')
+turet3=pygame.image.load('Grafa/turet3.png')
+
 grafaStatków = [statek1, statek2, statek3]
 pociski = [pocisk1, pocisk2, pocisk3, pocisk4]
+grafaTuret= [turet1,turet2,turet3]
 pygame.mixer.music.play(-1)
