@@ -1,131 +1,8 @@
 import pygame
 import sys
 import random
-
-pygame.init()  # musi być
-pygame.display.set_caption('Statki')
-a = pygame.image.load('Grafa/Logo.png')
-pygame.display.set_icon(a)
-
-clock = pygame.time.Clock()
-
-# moduł ze zmiennymi
-wysokoscOkna = 720
-szerokoscOkna = 1280
-rozmiarOkna = (szerokoscOkna, wysokoscOkna)
-obraz = pygame.display.set_mode(rozmiarOkna)
-zyciegracza1 = 0
-zyciegracza2 = szerokoscOkna - 200
-opcjemenu = -1
-my_missile_list = []
-lista_statków = []
-lista_enemy= []
-parametryplayer1 = []
-parametryplayer2 = []
-parametryplayer3 = []
-parametryplayer4 = []
-globalnytimer = 0
-rozrzutmenu = 20
-liczbagraczy = 4
-rollm = 0
-rollmstatic = 0
-startmouse = 0
-tabPaskow = []
-
-killRed = 0
-killBlue = 0
-kolorNapisu = (0, 255, 255)
-czcionka = pygame.font.Font("Czcionki/digital-7.ttf", 40)
-czcionka1 = pygame.font.Font("Czcionki/digital-7.ttf", 13)
-background = pygame.image.load("Grafa/background2.jpg").convert()
-menu = pygame.image.load("Grafa/backgroundmenu.jpg").convert()
-settings = pygame.image.load('Grafa/settings.jpg').convert()
-przyciskback = pygame.image.load('Grafa/przyciskback.png')
-menuopcje1= pygame.image.load('Grafa/menuopcje1.png')
-menuopcje2= pygame.image.load('Grafa/menuopcje2.png')
-przycisk = pygame.image.load('Grafa/przycisk.png')
-staty = pygame.image.load('Grafa/staty.png')
-pasek = pygame.image.load('Grafa/pasek.png')
-oko = pygame.image.load('Grafa/czaszkaoko.png')
-energiaGraph=pygame.image.load('Grafa/energy.png')
-czaszka = pygame.image.load('Grafa/czaszka4.png')
-staty2 = pygame.image.load('Grafa/staty2.png')
-staty3 = pygame.image.load('Grafa/staty3.png')
-staty4 = pygame.image.load('Grafa/staty4.png')
-przycisksettings = pygame.image.load('Grafa/przycisksettings.png')
-przycisksettings1 = pygame.image.load('Grafa/przycisksettings1.png')
-przyciskstart = pygame.image.load('Grafa/przyciskstart.png')
-przyciskstart1 = pygame.image.load('Grafa/przyciskstart1.png')
-przyciskexit = pygame.image.load('Grafa/przyciskexit.png')
-przycisk2 = pygame.image.load('Grafa/przycisk2.png')
-przycisk3 = pygame.image.load('Grafa/przycisk3.png')
-przycisk4 = pygame.image.load('Grafa/przycisk4.png')
-pustemenu = pygame.image.load('Grafa/pustemenu.jpg')
-przyciskdefence = pygame.image.load('Grafa/przyciskdefence.png')
-przyciskdefence1 = pygame.image.load('Grafa/przyciskdefence1.png')
-statek1 = pygame.image.load("Grafa/statek1.png")
-statek2 = pygame.image.load("Grafa/statek2.png")
-statek3 = pygame.image.load("Grafa/statek3.png")
-pocisk1 = pygame.image.load('Grafa/pocisk.png')
-pocisk2 = pygame.image.load('Grafa/pocisk2.png')
-pocisk4 = pygame.image.load('Grafa/pocisk4.png')
-pocisk3 = pygame.image.load('Grafa/pocisk3.png')
-tabelaplayer1=pygame.image.load('Grafa/statyp1.png')
-tabelaplayer2=pygame.image.load('Grafa/statyp2.png')
-tabelaplayer3=pygame.image.load('Grafa/statyp3.png')
-tabelaplayer4=pygame.image.load('Grafa/statyp4.png')
-life1 = pygame.image.load('Grafa/life1.png')
-pygame.mixer.music.load("Dźwięki/intel.mp3")
-grafaStatków = [statek1, statek2, statek3]
-pociski = [pocisk1, pocisk2, pocisk3, pocisk4]
-pygame.mixer.music.play(-1)
-
-
-# moduł resetowania pozycji
-def granicePlanszyX(pozycja):
-    if pozycja >= szerokoscOkna:
-        pozycja = szerokoscOkna
-    if pozycja < 0:
-        pozycja = 0
-    return pozycja
-
-
-def granicePlanszyY(pozycja):
-    if pozycja >= wysokoscOkna:
-        pozycja = wysokoscOkna
-    if pozycja < 0:
-        pozycja = 0
-    return pozycja
-
-
-def hitBox(pozycjax, pozycjay, pozycjax2, pozycjay2, rozmiar):
-    if (pozycjax + rozmiar >= pozycjax2) and (pozycjax - rozmiar <= pozycjax2) and (
-            pozycjay + rozmiar >= pozycjay2) and (pozycjay - rozmiar <= pozycjay2):
-        return 1
-
-
-# moduł poruszania sie
-def ruch(x, y, z, h):
-    tab = [0, 0]
-    if pygame.key.get_pressed()[x]:
-        tab[0] += -1
-    elif pygame.key.get_pressed()[y]:
-        tab[0] += 1
-    else:
-        tab[0] += 0
-    if pygame.key.get_pressed()[z]:
-        tab[1] += -1
-    elif pygame.key.get_pressed()[h]:
-        tab[1] += 1
-    else:
-        tab[1] += 0
-    return tab[:]
-
-
-def off():
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit(0)
+from zmienne import *
+from funkcje import *
 
 
 ##Klasa gracza
@@ -318,48 +195,11 @@ class Enemy():
         obraz.blit(self.image, [self.x, self.y])
 
 
-def przyciski(y):
-    if 172 < mouse[0] < 212 and y + ykoncowy < mouse[1] < y + 40 + ykoncowy:
-        if click[0]:
-            obraz.blit(przycisk4, [172, y + ykoncowy])
-            return 1
-        else:
-            obraz.blit(przycisk2, [172, y + ykoncowy])
-            return 0
-    if 380 < mouse[0] < 420 and y + ykoncowy < mouse[1] < y + 40 + ykoncowy:
-        if click[0]:
-            obraz.blit(przycisk3, [380, y + ykoncowy])
-            return -1
-        else:
-            obraz.blit(przycisk2, [380, y + ykoncowy])
-            return 0
-    else:
-        return 0
 
 
-def napisysets(co, x, y, step):
-    nazwa = str(co)
-    label2 = czcionka.render(nazwa, 1, kolorNapisu)
-    obraz.blit(label2, (x, y + step + ykoncowy))
 
-def napisybloki(gracz,step):
-    obraz.blit(staty, [178, step + ykoncowy])
-    lista_statków[gracz].basehp += przyciski(80)
-    lista_statków[gracz].baseenergia += przyciski(160)
-    lista_statków[gracz].energiaregen += przyciski(240)
-    lista_statków[gracz].speed += przyciski(320)
-    lista_statków[gracz].dmg += przyciski(400)
-    lista_statków[gracz].predkoscyshot += przyciski(480)
-    lista_statków[gracz].predkoscxshot += przyciski(560)
-    lista_statków[gracz].modyfikatorrozrzutu += przyciski(640)
-    napisysets(lista_statków[gracz].basehp, 260, 83, step)
-    napisysets(lista_statków[gracz].baseenergia, 260, 163, step)
-    napisysets(lista_statków[gracz].energiaregen, 260, 243, step)
-    napisysets(lista_statków[gracz].speed, 260, 323, step)
-    napisysets(lista_statków[gracz].dmg, 260, 403, step)
-    napisysets(lista_statków[gracz].predkoscyshot, 260, 483, step)
-    napisysets(lista_statków[gracz].predkoscxshot, 260, 563, step)
-    napisysets(lista_statków[gracz].modyfikatorrozrzutu, 260, 643, step)
+
+
 
 
 ################Pętla programu całego#######################
