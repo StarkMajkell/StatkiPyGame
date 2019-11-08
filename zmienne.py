@@ -80,8 +80,16 @@ pygame.mixer.music.load("Dźwięki/intel.mp3")
 turet1=pygame.image.load('Grafa/turet1.png')
 turet2=pygame.image.load('Grafa/turet2.png')
 turet3=pygame.image.load('Grafa/turet3.png')
-
+enemy1 = pygame.image.load('Grafa/enemy1.png')
 grafaStatków = [statek1, statek2, statek3]
+grafaEnemy = [enemy1]
 pociski = [pocisk1, pocisk2, pocisk3, pocisk4]
 grafaTuret= [turet1,turet2,turet3]
 pygame.mixer.music.play(-1)
+tabMiejsTuretow = []
+tabMiejsTuretow.append([400,100,500,200])
+kasa=1000
+tabMiejsTuretow = []
+tabMiejsTuretow.append([732, 315, szerokoscOkna-30, 330])
+tabMiejsTuretow.append([30, 384, 598, 400])
+tabMiejsTuretow.append([580, 250, 600, 400])
