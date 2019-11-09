@@ -44,7 +44,7 @@ settings = pygame.image.load('Grafa/settings.jpg').convert()
 przyciskback = pygame.image.load('Grafa/przyciskback.png')
 menuopcje1= pygame.image.load('Grafa/menuopcje1.png')
 menuopcje2= pygame.image.load('Grafa/menuopcje2.png')
-przycisk = pygame.image.load('Grafa/przycisk.png')
+
 staty = pygame.image.load('Grafa/staty.png')
 pasek = pygame.image.load('Grafa/pasek.png')
 oko = pygame.image.load('Grafa/czaszkaoko.png')
@@ -57,7 +57,7 @@ przycisksettings = pygame.image.load('Grafa/przycisksettings.png')
 przycisksettings1 = pygame.image.load('Grafa/przycisksettings1.png')
 przyciskstart = pygame.image.load('Grafa/przyciskstart.png')
 przyciskstart1 = pygame.image.load('Grafa/przyciskstart1.png')
-przyciskexit = pygame.image.load('Grafa/przyciskexit.png')
+
 przycisk2 = pygame.image.load('Grafa/przycisk2.png')
 przycisk3 = pygame.image.load('Grafa/przycisk3.png')
 przycisk4 = pygame.image.load('Grafa/przycisk4.png')
@@ -71,6 +71,7 @@ pocisk1 = pygame.image.load('Grafa/pocisk.png')
 pocisk2 = pygame.image.load('Grafa/pocisk2.png')
 pocisk4 = pygame.image.load('Grafa/pocisk4.png')
 pocisk3 = pygame.image.load('Grafa/pocisk3.png')
+pocisk5 = pygame.image.load('Grafa/pocisk5.png')
 tabelaplayer1=pygame.image.load('Grafa/statyp1.png')
 tabelaplayer2=pygame.image.load('Grafa/statyp2.png')
 tabelaplayer3=pygame.image.load('Grafa/statyp3.png')
@@ -80,16 +81,23 @@ pygame.mixer.music.load("Dźwięki/intel.mp3")
 turet1=pygame.image.load('Grafa/turet1.png')
 turet2=pygame.image.load('Grafa/turet2.png')
 turet3=pygame.image.load('Grafa/turet3.png')
+turet2_1=pygame.image.load('Grafa/turet2-1.png')
+turet2_2=pygame.image.load('Grafa/turet2-2.png')
+turet2_3=pygame.image.load('Grafa/turet2-3.png')
+turet2_4=pygame.image.load('Grafa/turet2-4.png')
+turet2_5=pygame.image.load('Grafa/turet2-5.png')
+turet2_6=pygame.image.load('Grafa/turet2-6.png')
+turet2_7=pygame.image.load('Grafa/turet2-7.png')
+turet2_8=pygame.image.load('Grafa/turet2-8.png')
 enemy1 = pygame.image.load('Grafa/enemy1.png')
+enemy2 = pygame.image.load('Grafa/enemy2.png')
 grafaStatków = [statek1, statek2, statek3]
-grafaEnemy = [enemy1]
+grafaEnemy = [enemy1,enemy2]
 pociski = [pocisk1, pocisk2, pocisk3, pocisk4]
-grafaTuret= [turet1,turet2,turet3]
+grafaTuret= [turet1,turet2,turet3,turet2_1]
 pygame.mixer.music.play(-1)
-tabMiejsTuretow = []
-tabMiejsTuretow.append([400,100,500,200])
 kasa=1000
 tabMiejsTuretow = []
-tabMiejsTuretow.append([732, 315, szerokoscOkna-30, 330])
+tabMiejsTuretow.append([732, 315, szerokoscOkna-20, 340])
 tabMiejsTuretow.append([30, 384, 598, 400])
 tabMiejsTuretow.append([580, 250, 600, 400])
