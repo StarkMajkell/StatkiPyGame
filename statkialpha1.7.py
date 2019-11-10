@@ -461,10 +461,14 @@ while True:
     if opcjemenu == 3:
         zmiennatrzymaszturet = 0
         lokalnytimer2=0
+        zmiennanablokowaniepola = 0
         while True:
             obraz.blit(pustemenu, [0, 0])
             if globalnytimer < 5:
                 globalnytimer += 1
+                for b in lista_turet:
+                    if b.magazynek < b.firerate:
+                        b.magazynek += 1
             else:
                 globalnytimer = 0
             clock.tick(60)
@@ -484,7 +488,7 @@ while True:
                 lista_turet.append(Turet(70, 615, 3, 20, 2, 2, 100,200))
                 kasa-=30
             if click[0] and 203 < mouse[0] < 254 and 617 < mouse[1] < 673 and zmiennatrzymaszturet == 0 and kasa >= 120:
-                lista_turet.append(Turet(203, 617, 3, 1, 2, 2, 10,800))
+                lista_turet.append(Turet(203, 617, 3, 11, 2, 2, 10,800))
                 kasa-=120
 
             for b in lista_turet:
@@ -499,17 +503,21 @@ while True:
                 suma = 0
                 for i in range(len(tabMiejsTuretow)):
                     suma += (poleTureta(*tabMiejsTuretow[i]))
-                if suma >= 1:
+                if suma == 0:
                     if zmiennatrzymaszturet == 1 and b.postawiony==0:
                         pygame.draw.circle(obraz,[0,0,0],(mouse[0],mouse[1]),b.range,2)
                         obraz.blit(turet3, [mouse[0] - 30, mouse[1] - 30])
 
-                    if not click[0]:
+                    if not click[0] and b.postawiony==0:
                         zmiennatrzymaszturet = 0
                         b.postawiony = 1
+                        zmiennanablokowaniepola=1
+                    if zmiennanablokowaniepola==1:
+                        tabMiejsTuretow.append([mouse[0]-50, mouse[1]-50, mouse[0]+50, mouse[1]+50])
+                        zmiennanablokowaniepola=0
 
 
-                if suma == 0:
+                if suma != 0:
                     if zmiennatrzymaszturet == 1 and b.postawiony==0:
 
                         pygame.draw.circle(obraz,[0,0,0],(mouse[0],mouse[1]),b.range,2)
@@ -521,9 +529,7 @@ while True:
             for j in lista_enemy:
                 for i in lista_turet:
                     if zasieg(i.x, i.y, j.x, j.y, i.range) == 1:
-                        if i.magazynek<i.firerate:
-                            i.magazynek+=1
-                        else:
+                        if i.magazynek==i.firerate:
                             kierunkowax = -((i.x - j.x) * 0.1 + j.vx)
                             kierunkoway = -((i.y - j.y) * 0.1 - j.vy)
                             if kierunkoway == 0:
@@ -593,7 +599,7 @@ while True:
             # tutaj idzie kod do pustego menu
 
             if globalnytimer == 5:
-                if lokalnytimer2 < 20:
+                if lokalnytimer2 < 2:
                     lokalnytimer2+=1
                 else:
                     lokalnytimer2=0

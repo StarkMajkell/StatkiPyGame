@@ -98,6 +98,6 @@ grafaTuret= [turet1,turet2,turet3,turet2_1]
 pygame.mixer.music.play(-1)
 kasa=1000
 tabMiejsTuretow = []
-tabMiejsTuretow.append([732, 315, szerokoscOkna-20, 340])
-tabMiejsTuretow.append([30, 384, 598, 400])
-tabMiejsTuretow.append([580, 250, 600, 400])
+#mapa pierwsza:
+tabMiejsTuretow.append([-1, 406, 725, 526])
+tabMiejsTuretow.append([607, 204, szerokoscOkna+26, 308])
