@@ -33,6 +33,7 @@ rollmstatic = 0
 startmouse = 0
 tabPaskow = []
 
+
 killRed = 0
 killBlue = 0
 kolorNapisu = (0, 255, 255)
@@ -44,6 +45,8 @@ settings = pygame.image.load('Grafa/settings.jpg').convert()
 przyciskback = pygame.image.load('Grafa/przyciskback.png')
 menuopcje1= pygame.image.load('Grafa/menuopcje1.png')
 menuopcje2= pygame.image.load('Grafa/menuopcje2.png')
+mapa1=pygame.image.load('Grafa/mapa1.png')
+mapmaking=pygame.image.load('Grafa/mapmaking.png')
 
 staty = pygame.image.load('Grafa/staty.png')
 pasek = pygame.image.load('Grafa/pasek.png')
