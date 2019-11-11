@@ -3,7 +3,28 @@ import sys
 import random
 from zmienne import *
 from funkcje import *
+listakropekkordyx = []
+listakropekkordyy = []
+listakropekkordyx2 = []
+listakropekkordyy2 = []
 
+file = open('mapaBetax.txt', 'r').read()
+file = file.split('\n')
+for line in file:
+    listakropekkordyx2.append(line)
+
+file = open('mapaBetay.txt', 'r').read()
+file = file.split('\n')
+for line in file:
+    listakropekkordyy2.append(line)
+
+y = len(listakropekkordyx2)
+for i in range(0,y-2):
+    listakropekkordyx.append(int(listakropekkordyx2[i]))
+
+y = len(listakropekkordyy2)
+for i in range(0,y-2):
+    listakropekkordyy.append(int(listakropekkordyy2[i]))
 
 def zasieg(pozycjax, pozycjay, pozycjax2, pozycjay2, range):
     x = ((pozycjax - pozycjax2) ** 2 + (pozycjay - pozycjay2) ** 2) ** (1 / 2)
@@ -253,7 +274,7 @@ class Enemy():
         self.vy = (self.y - listakropekkordyy[self.zmiennai])
         self.x -= self.vx
         self.y -= self.vy
-        if self.zmiennai < len(listakropekkordy)-1:
+        if self.zmiennai < len(listakropekkordyx)-1:
             self.zmiennai += 1
         else:
             self.istnieje = 0
@@ -395,12 +416,11 @@ while True:
             pygame.display.flip()
             off()
     #########################################################################################################
-    # MODUŁ OD WCZYTYWANIA CONFIGU
+    # map maker
     if opcjemenu == 4:
         listakropek = []
         listakropekkordyx = []
         listakropekkordyy = []
-        listakropekkordy = []
 
         while True:
 
@@ -411,7 +431,6 @@ while True:
                 listakropek.append(Kropka(mouse[0],mouse[1]))
                 listakropekkordyx.append(mouse[0])
                 listakropekkordyy.append(mouse[1])
-                listakropekkordy.append([mouse[0],mouse[1]])
             for b in listakropek:
                 b.update()
             tupala = mouse[0], mouse[1]
@@ -425,6 +444,18 @@ while True:
                 break
             pygame.display.flip()
             off()
+
+        iksy = open('mapaBetax.txt', 'w')
+        for x in listakropekkordyx:
+            iksy.write(str(x))
+            iksy.write('\n')
+        iksy.close()
+
+        igreki = open('mapaBetay.txt', 'w')
+        for x in listakropekkordyy:
+            igreki.write(str(x))
+            igreki.write('\n')
+        igreki.close()
 
     # menu ustawienia
     if opcjemenu == 2:
@@ -630,15 +661,8 @@ while True:
                             bb.istnieje=0
                 if b.istnieje ==0:
                     my_missile_list.remove(b)
-
-
-
-
-
-
             # tutaj idzie kod do pustego menu
             # tutaj idzie kod do pustego menu
-
             if globalnytimer == 5:
                 if lokalnytimer2 < 33:
                     lokalnytimer2 += 1
