@@ -2,6 +2,9 @@ import pygame
 import sys
 import random
 
+
+
+
 def granicePlanszyX(pozycja):
     if pozycja >= szerokoscOkna:
         pozycja = szerokoscOkna

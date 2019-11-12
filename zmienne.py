@@ -34,6 +34,14 @@ startmouse = 0
 tabPaskow = []
 
 
+
+listakropekkordyx = []
+listakropekkordyy = []
+listakropekkordyx2 = []
+listakropekkordyy2 = []
+
+
+
 killRed = 0
 killBlue = 0
 kolorNapisu = (0, 255, 255)
@@ -99,8 +107,4 @@ grafaEnemy = [enemy1,enemy2]
 pociski = [pocisk1, pocisk2, pocisk3, pocisk4]
 grafaTuret= [turet1,turet2,turet3,turet2_1]
 pygame.mixer.music.play(-1)
-kasa=1000
-tabMiejsTuretow = []
-#mapa pierwsza:
-tabMiejsTuretow.append([-1, 406, 725, 526])
-tabMiejsTuretow.append([607, 204, szerokoscOkna+26, 308])
+
