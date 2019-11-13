@@ -655,15 +655,18 @@ while True:
 
             napis(kasa,20,0)
 
-            if click[0] and 70 < mouse[0] < 120 and 615 < mouse[1] < 665 and zmiennatrzymaszturet == 0 and kasa >= 30:
+            if click[0] and 70 < mouse[0] < 120 and 617 < mouse[1] < 667 and zmiennatrzymaszturet == 0 and kasa >= 30:
                 lista_turet.append(Turet(70, 615, 3, 20, 2, 2, 50,200,30))
                 kasa-=30
-            if click[0] and 203 < mouse[0] < 254 and 617 < mouse[1] < 663 and zmiennatrzymaszturet == 0 and kasa >= 40:
+                zmiennatrzymaszturet = 1
+            if click[0] and 190 < mouse[0] < 240 and 617 < mouse[1] < 667 and zmiennatrzymaszturet == 0 and kasa >= 40:
                 lista_turet.append(Turet(203, 617, 3, 70, 2, 2, 20,700,40))
                 kasa-=40
-            if click[0] and 130 < mouse[0] < 180 and 617 < mouse[1] < 663 and zmiennatrzymaszturet == 0 and kasa >= 40:
+                zmiennatrzymaszturet=1
+            if click[0] and 130 < mouse[0] < 180 and 617 < mouse[1] < 667 and zmiennatrzymaszturet == 0 and kasa >= 50:
                 lista_turet.append(Turet(130, 617, 3, 4, 2, 2, 6,600,50))
-                kasa-=40
+                kasa-=50
+                zmiennatrzymaszturet = 1
 
             for b in lista_turet:
                 if b.postawiony ==1 :
@@ -827,6 +830,7 @@ while True:
                 if i.istnieje==0:
                     lista_eksplozji.remove(i)
                 i.update()
+            obraz.blit(sklepmenuturety, [70, 617])
 
             if szerokoscOkna - 220 < mouse[0] < szerokoscOkna and wysokoscOkna - 36 < mouse[1] < wysokoscOkna:
                 if click[0]:
