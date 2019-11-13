@@ -32,6 +32,8 @@ rollm = 0
 rollmstatic = 0
 startmouse = 0
 tabPaskow = []
+lista_odrzut= []
+lista_eksplozji=[]
 
 
 
@@ -100,11 +102,40 @@ turet2_5=pygame.image.load('Grafa/turet2-5.png')
 turet2_6=pygame.image.load('Grafa/turet2-6.png')
 turet2_7=pygame.image.load('Grafa/turet2-7.png')
 turet2_8=pygame.image.load('Grafa/turet2-8.png')
+pocisk6_1=pygame.image.load('Grafa/pocisk6_1.png')
+pocisk6_2=pygame.image.load('Grafa/pocisk6_2.png')
+pocisk6_3=pygame.image.load('Grafa/pocisk6_3.png')
+pocisk6_4=pygame.image.load('Grafa/pocisk6_4.png')
+pocisk6_5=pygame.image.load('Grafa/pocisk6_5.png')
+pocisk6_6=pygame.image.load('Grafa/pocisk6_6.png')
+pocisk6_7=pygame.image.load('Grafa/pocisk6_7.png')
+pocisk6_8=pygame.image.load('Grafa/pocisk6_8.png')
+odrzut1_1=pygame.image.load('Grafa/odrzut1_1.png')
+odrzut1_2=pygame.image.load('Grafa/odrzut1_2.png')
+odrzut1_3=pygame.image.load('Grafa/odrzut1_3.png')
+odrzut1_4=pygame.image.load('Grafa/odrzut1_4.png')
+odrzut1_5=pygame.image.load('Grafa/odrzut1_5.png')
+odrzut1_6=pygame.image.load('Grafa/odrzut1_6.png')
+odrzut1_7=pygame.image.load('Grafa/odrzut1_7.png')
 enemy1 = pygame.image.load('Grafa/enemy1.png')
 enemy2 = pygame.image.load('Grafa/enemy2.png')
+enemy5_1 = pygame.image.load('Grafa/enemy5_1.png')
+enemy5_2 = pygame.image.load('Grafa/enemy5_2.png')
+enemy5_3 = pygame.image.load('Grafa/enemy5_3.png')
+enemy5_4 = pygame.image.load('Grafa/enemy5_4.png')
+enemy5_5 = pygame.image.load('Grafa/enemy5_5.png')
+enemy5_6 = pygame.image.load('Grafa/enemy5_6.png')
+enemy5_7 = pygame.image.load('Grafa/enemy5_7.png')
+enemy5_8 = pygame.image.load('Grafa/enemy5_8.png')
+eksplosion1_1=pygame.image.load('Grafa/eksplosion1_1.png')
+eksplosion1_2=pygame.image.load('Grafa/eksplosion1_2.png')
+eksplosion1_3=pygame.image.load('Grafa/eksplosion1_3.png')
+eksplosion1_4=pygame.image.load('Grafa/eksplosion1_4.png')
 grafaStatków = [statek1, statek2, statek3]
 grafaEnemy = [enemy1,enemy2]
-pociski = [pocisk1, pocisk2, pocisk3, pocisk4]
+pociski = [pocisk1, pocisk2, pocisk3, pocisk4,pocisk5]
+listaodrzutów = [odrzut1_1,odrzut1_2,odrzut1_3,odrzut1_4,odrzut1_5,odrzut1_6,odrzut1_7]
+eksplozje = [eksplosion1_1,eksplosion1_2,eksplosion1_3,eksplosion1_4]
 grafaTuret= [turet1,turet2,turet3,turet2_1]
 pygame.mixer.music.play(-1)
 
