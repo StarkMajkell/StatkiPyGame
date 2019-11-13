@@ -841,23 +841,23 @@ while True:
                     zycie -= 5
                     print(zycie)
             for i in lista_eksplozji:
-                if i.klatka < i.iloscklatek:
-                    i.klatka+=1
-                else:
-                    i.istnieje=0
+                if globalnytimer ==5 or globalnytimer ==2:
+                    if i.klatka < i.iloscklatek:
+                        i.klatka+=1
+                    else:
+                        i.istnieje=0
                 if i.istnieje==0:
                     lista_eksplozji.remove(i)
                 i.update()
             obraz.blit(sklepmenuturety, [70, 617])
             if len(lista_enemy)==0 and xdddd ==0:
                 print('wygrales')
-                lista_eksplozji.append(animacjaeksplozji(random.randint(0,szerokoscOkna),random.randint(0,wysokoscOkna),eksplozje2))
-                lista_eksplozji.append(
-                    animacjaeksplozji(random.randint(0, szerokoscOkna), random.randint(0, wysokoscOkna), eksplozje2))
-                lista_eksplozji.append(
-                    animacjaeksplozji(random.randint(0, szerokoscOkna), random.randint(0, wysokoscOkna), eksplozje2))
-                lista_eksplozji.append(
-                    animacjaeksplozji(random.randint(0, szerokoscOkna), random.randint(0, wysokoscOkna), eksplozje2))
+                lista_eksplozji.append(animacjaeksplozji(random.randint(-90,szerokoscOkna),random.randint(-90,wysokoscOkna),eksplozje2))
+                lista_eksplozji.append(animacjaeksplozji(random.randint(-90,szerokoscOkna),random.randint(-90,wysokoscOkna),eksplozje2))
+                lista_eksplozji.append(animacjaeksplozji(random.randint(-90,szerokoscOkna),random.randint(-90,wysokoscOkna),eksplozje2))
+                lista_eksplozji.append(animacjaeksplozji(random.randint(-90,szerokoscOkna),random.randint(-90,wysokoscOkna),eksplozje2))
+                lista_eksplozji.append(animacjaeksplozji(random.randint(-90,szerokoscOkna),random.randint(-90,wysokoscOkna),eksplozje2))
+
 
 
             if szerokoscOkna - 220 < mouse[0] < szerokoscOkna and wysokoscOkna - 36 < mouse[1] < wysokoscOkna:
