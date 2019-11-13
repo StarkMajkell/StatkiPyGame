@@ -389,6 +389,11 @@ class animacjaeksplozji():
         self.image2 = listaanimacjieksplozji[1]
         self.image3 = listaanimacjieksplozji[2]
         self.image4 = listaanimacjieksplozji[3]
+        if len(listaanimacjieksplozji)>4:
+            self.image5 = listaanimacjieksplozji[4]
+            self.image6 = listaanimacjieksplozji[5]
+            self.image7 = listaanimacjieksplozji[6]
+            self.image8 = listaanimacjieksplozji[7]
         self.istnieje = 1
     def update(self):
         if self.klatka ==0:
@@ -399,6 +404,14 @@ class animacjaeksplozji():
             obraz.blit(self.image3,[self.x,self.y])
         if self.klatka ==3:
             obraz.blit(self.image4,[self.x,self.y])
+        if self.klatka ==4:
+            obraz.blit(self.image5,[self.x,self.y])
+        if self.klatka ==5:
+            obraz.blit(self.image6,[self.x,self.y])
+        if self.klatka ==6:
+            obraz.blit(self.image7,[self.x,self.y])
+        if self.klatka ==7:
+            obraz.blit(self.image8,[self.x,self.y])
 
 
 
@@ -623,6 +636,7 @@ while True:
     ################################################################################## ########################
     # puste menu
     if opcjemenu == 3:
+        xdddd=1
         kasa = 120
         zycie= 100
         falapierwsza = 0
@@ -765,10 +779,10 @@ while True:
                 if i.zasieg > i.range:
                     i.istnieje=0
                 for bb in lista_enemy:
-                    if bb.x <i.x < bb.x + 30 and bb.y <i.y < bb.y + 30:
+                    if bb.x-4 <i.x < bb.x + 30 and bb.y-4 <i.y < bb.y + 30:
                         i.istnieje=0
                         if i.typpocisku ==1:
-                            lista_eksplozji.append(animacjaeksplozji(i.x-50,i.y-50,eksplozje))
+                            lista_eksplozji.append(animacjaeksplozji(i.x-50,i.y-50,eksplozje2))
                         else:
                             bb.hp -= i.dmg
 
@@ -806,12 +820,16 @@ while True:
                     if falapierwsza < 30:
                         falapierwsza+=1
                         lista_enemy.append(Enemy(listakropekkordyx[0], listakropekkordyy[0], 1, 200, 0, 0, 10))
+                    else:
+                        xdddd=0
+
             for i in lista_enemy:
                 i.trasa()
                 i.zycieenemy()
                 if i.hp <= 0:
                     i.istnieje = 0
-                animacjaobrotutureta(enemy5_1, enemy5_2, enemy5_3, enemy5_4, enemy5_5, enemy5_6, enemy5_7, enemy5_8, -i.vx, -i.vy)
+                if globalnytimer==5:
+                    animacjaobrotutureta(enemy5_1, enemy5_2, enemy5_3, enemy5_4, enemy5_5, enemy5_6, enemy5_7, enemy5_8, -i.vx, -i.vy)
                 for b in lista_eksplozji:
                     if b.x<i.x+10<b.x+120 and b.y<i.y+10<b.y+120:
                         i.hp -=10
@@ -831,6 +849,16 @@ while True:
                     lista_eksplozji.remove(i)
                 i.update()
             obraz.blit(sklepmenuturety, [70, 617])
+            if len(lista_enemy)==0 and xdddd ==0:
+                print('wygrales')
+                lista_eksplozji.append(animacjaeksplozji(random.randint(0,szerokoscOkna),random.randint(0,wysokoscOkna),eksplozje2))
+                lista_eksplozji.append(
+                    animacjaeksplozji(random.randint(0, szerokoscOkna), random.randint(0, wysokoscOkna), eksplozje2))
+                lista_eksplozji.append(
+                    animacjaeksplozji(random.randint(0, szerokoscOkna), random.randint(0, wysokoscOkna), eksplozje2))
+                lista_eksplozji.append(
+                    animacjaeksplozji(random.randint(0, szerokoscOkna), random.randint(0, wysokoscOkna), eksplozje2))
+
 
             if szerokoscOkna - 220 < mouse[0] < szerokoscOkna and wysokoscOkna - 36 < mouse[1] < wysokoscOkna:
                 if click[0]:

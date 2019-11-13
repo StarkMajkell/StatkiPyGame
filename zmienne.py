@@ -132,11 +132,20 @@ eksplosion1_1=pygame.image.load('Grafa/eksplosion1_1.png')
 eksplosion1_2=pygame.image.load('Grafa/eksplosion1_2.png')
 eksplosion1_3=pygame.image.load('Grafa/eksplosion1_3.png')
 eksplosion1_4=pygame.image.load('Grafa/eksplosion1_4.png')
+eksplosion2_1=pygame.image.load('Grafa/eksplosion2_1.png')
+eksplosion2_2=pygame.image.load('Grafa/eksplosion2_2.png')
+eksplosion2_3=pygame.image.load('Grafa/eksplosion2_3.png')
+eksplosion2_4=pygame.image.load('Grafa/eksplosion2_4.png')
+eksplosion2_5=pygame.image.load('Grafa/eksplosion2_5.png')
+eksplosion2_6=pygame.image.load('Grafa/eksplosion2_6.png')
+eksplosion2_7=pygame.image.load('Grafa/eksplosion2_7.png')
+eksplosion2_8=pygame.image.load('Grafa/eksplosion2_8.png')
 grafaStatków = [statek1, statek2, statek3]
 grafaEnemy = [enemy1,enemy2]
 pociski = [pocisk1, pocisk2, pocisk3, pocisk4,pocisk5]
 listaodrzutów = [odrzut1_1,odrzut1_2,odrzut1_3,odrzut1_4,odrzut1_5,odrzut1_6,odrzut1_7]
 eksplozje = [eksplosion1_1,eksplosion1_2,eksplosion1_3,eksplosion1_4]
+eksplozje2 = [eksplosion2_1,eksplosion2_2,eksplosion2_3,eksplosion2_4,eksplosion2_5,eksplosion2_6,eksplosion2_7,eksplosion2_8]
 grafaTuret= [turet1,turet2,turet3,turet2_1]
 pygame.mixer.music.play(-1)
 
