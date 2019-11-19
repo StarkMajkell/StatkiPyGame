@@ -1,9 +1,23 @@
 import pygame
 import sys
 import random
+from zmienne import *
 
+def zasieg(pozycjax, pozycjay, pozycjax2, pozycjay2, range):
+    x = ((pozycjax - pozycjax2) ** 2 + (pozycjay - pozycjay2) ** 2) ** (1 / 2)
+    if x < range:
+        return 1
+    else:
+        return 0
 
-
+def strzal():
+    a = random.randint(0, 2)
+    if a == 0:
+        pygame.mixer.Sound.play(zium)
+    elif a == 1:
+        pygame.mixer.Sound.play(zium2)
+    else:
+        pygame.mixer.Sound.play(zium3)
 
 def granicePlanszyX(pozycja):
     if pozycja >= szerokoscOkna:

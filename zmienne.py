@@ -2,11 +2,14 @@ import pygame
 import sys
 import random
 
-pygame.init()  # musi być
+#pygame.init()  # musi być
+pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=512)
+pygame.mixer.init()
+pygame.font.init()
 pygame.display.set_caption('Statki')
 a = pygame.image.load('Grafa/Logo.png')
 pygame.display.set_icon(a)
-
+pygame.mixer.set_num_channels(30)
 clock = pygame.time.Clock()
 
 # moduł ze zmiennymi
@@ -37,6 +40,7 @@ lista_eksplozji=[]
 
 
 
+
 listakropekkordyx = []
 listakropekkordyy = []
 listakropekkordyx2 = []
@@ -55,8 +59,16 @@ settings = pygame.image.load('Grafa/settings.jpg').convert()
 przyciskback = pygame.image.load('Grafa/przyciskback.png')
 menuopcje1= pygame.image.load('Grafa/menuopcje1.png')
 menuopcje2= pygame.image.load('Grafa/menuopcje2.png')
+platform=pygame.image.load('Grafa/platform.png')
 mapa1=pygame.image.load('Grafa/mapa1.png')
 mapmaking=pygame.image.load('Grafa/mapmaking.png')
+zium=pygame.mixer.Sound('Dźwięki/zium.ogg')
+zium2=pygame.mixer.Sound('Dźwięki/zium2.ogg')
+zium3=pygame.mixer.Sound('Dźwięki/zium3.ogg')
+boom1=pygame.mixer.Sound('Dźwięki/boom1.ogg')
+boom2=pygame.mixer.Sound('Dźwięki/boom2.ogg')
+kick=pygame.mixer.Sound('Dźwięki/kick.ogg')
+punch=pygame.mixer.Sound('Dźwięki/punch.ogg')
 
 staty = pygame.image.load('Grafa/staty.png')
 pasek = pygame.image.load('Grafa/pasek.png')
@@ -91,7 +103,7 @@ tabelaplayer3=pygame.image.load('Grafa/statyp3.png')
 tabelaplayer4=pygame.image.load('Grafa/statyp4.png')
 life1 = pygame.image.load('Grafa/life1.png')
 sklepmenuturety = pygame.image.load('Grafa/sklepmenuturety.png')
-pygame.mixer.music.load("Dźwięki/intel.mp3")
+pygame.mixer.music.load("Dźwięki/nutka1.ogg")
 turet1=pygame.image.load('Grafa/turet1.png')
 turet2=pygame.image.load('Grafa/turet2.png')
 turet3=pygame.image.load('Grafa/turet3.png')
@@ -140,6 +152,22 @@ eksplosion2_5=pygame.image.load('Grafa/eksplosion2_5.png')
 eksplosion2_6=pygame.image.load('Grafa/eksplosion2_6.png')
 eksplosion2_7=pygame.image.load('Grafa/eksplosion2_7.png')
 eksplosion2_8=pygame.image.load('Grafa/eksplosion2_8.png')
+ludz=pygame.image.load('Grafa/ludz.png')
+ludzlewo=pygame.image.load('Grafa/ludzlewo.png')
+ludzprawo=pygame.image.load('Grafa/ludzprawo.png')
+ludzgóra=pygame.image.load('Grafa/ludzgóra.png')
+ludzskok=pygame.image.load('Grafa/ludzskok.png')
+ludzskok1=pygame.image.load('Grafa/ludzskok1.png')
+ludzskok2=pygame.image.load('Grafa/ludzskok2.png')
+ludzskok3=pygame.image.load('Grafa/ludzskok3.png')
+ludzkop1=pygame.image.load('Grafa/ludzkop1.png')
+ludzkop3=pygame.image.load('Grafa/ludzkop3.png')
+ludzpunch1=pygame.image.load('Grafa/ludzpunch1.png')
+ludzpunch3=pygame.image.load('Grafa/ludzpunch3.png')
+ludzkuc=pygame.image.load('Grafa/ludzkuc.png')
+efekt1=pygame.image.load('Grafa/efekt1.png')
+efekt2=pygame.image.load('Grafa/efekt2.png')
+efekt3=pygame.image.load('Grafa/efekt3.png')
 grafaStatków = [statek1, statek2, statek3]
 grafaEnemy = [enemy1,enemy2,enemy5_1]
 pociski = [pocisk1, pocisk2, pocisk3, pocisk4,pocisk5]
@@ -147,5 +175,8 @@ listaodrzutów = [odrzut1_1,odrzut1_2,odrzut1_3,odrzut1_4,odrzut1_5,odrzut1_6,od
 eksplozje = [eksplosion1_1,eksplosion1_2,eksplosion1_3,eksplosion1_4]
 eksplozje2 = [eksplosion2_1,eksplosion2_2,eksplosion2_3,eksplosion2_4,eksplosion2_5,eksplosion2_6,eksplosion2_7,eksplosion2_8]
 grafaTuret= [turet1,turet2,turet3,turet2_1]
-pygame.mixer.music.play(-1)
+listaefektów=[efekt1,efekt2,efekt2,efekt2,efekt3,efekt3]
+#pygame.mixer.music.play(-1)
+
+tabeleagrawitacji=[11,11,12,8,6,5,4.8,4.5,4.2,3.8,3,2.1,1,0.5,0.2,0.1,0.1,-0.1,-0.1,-0.2,-0.5,-1,-2.1,-3,-3.8,-4.2,-4.5,-4.8,-5,-6,-8,-12,-11,-11,]
 
